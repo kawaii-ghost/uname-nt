@@ -1,7 +1,7 @@
 #include <veil.h>
 #include <cstdio>
 #include <cstring>
-#include <wchar.h>
+#include <cwchar>
 
 #ifdef _M_ARM64EC
 #define MACHINE_NAME L"ARM64EC"
@@ -39,7 +39,7 @@ int wmain(int argc, wchar_t **argv)
 
 	for (int i = 1; i < argc; i++) {
 		if (wcscmp(argv[i], L"-a") == 0 || wcscmp(argv[i], L"--all") == 0) {
-			wprintf(L"%ls %ls %d %d.%d.%d %ls %ls ",
+			wprintf(L"%ls %ls %u %u.%u.%u %ls %ls ",
 				KRNL_NAME,
 				szHostName,
 				SystemInfo.dwMajorVersion,
@@ -56,10 +56,10 @@ int wmain(int argc, wchar_t **argv)
 			wprintf(L"%ls ", szHostName);
 		}
 		else if (wcscmp(argv[i], L"-r") == 0 || wcscmp(argv[i], L"--kernel-release") == 0) {
-			wprintf(L"%d ", SystemInfo.dwMajorVersion);
+			wprintf(L"%u ", SystemInfo.dwMajorVersion);
 		}
 		else if (wcscmp(argv[i], L"-v") == 0 || wcscmp(argv[i], L"--kernel-version") == 0) {
-			wprintf(L"%d.%d.%d ",
+			wprintf(L"%u.%u.%u ",
 				SystemInfo.dwMajorVersion,
 				SystemInfo.dwMinorVersion,
 				SystemInfo.dwBuildNumber);
