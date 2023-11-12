@@ -30,7 +30,7 @@ int wmain(int argc, wchar_t **argv)
 	}
 
 	wchar_t szHostName[MAX_COMPUTERNAME_LENGTH + 1];
-	DWORD nSize = sizeof(szHostName) / sizeof(szHostName[0]);
+	DWORD nSize = ARRAYSIZE(szHostName);
 	GetComputerNameW(szHostName, &nSize);
 
 	RTL_OSVERSIONINFOW SystemInfo{};
